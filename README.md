@@ -2,7 +2,23 @@
 
 Propoj CLI je moderní nástroj příkazového řádku pro interakci s Microsoft 365 službami včetně Outlooku (e-mailu), Kalendáře, SharePointu a OneDrive.
 
-## Instalace
+## Rychlé Nastavení (5 minut)
+
+### Pro Linux/Mac:
+```bash
+bash setup.sh
+```
+
+### Pro Windows (PowerShell):
+```powershell
+.\setup.ps1
+```
+
+Skript tě provede celým nastavením! 🎉
+
+---
+
+## Instalace (Manuálně)
 
 ```bash
 npm install
@@ -16,27 +32,41 @@ Nebo přímo spusťte CLI:
 node dist/cli.js
 ```
 
-## Nastavení
+## Nastavení Azure (Detailní Návod)
 
-### 1. Zaregistrujte aplikaci v Azure
+👉 **Čti [SETUP_AZURE.md](./SETUP_AZURE.md)** pro krok za krokem instrukce
 
-1. Jděte na [Azure Portal](https://portal.azure.com)
-2. Vyberte **Azure Active Directory** → **App registrations**
-3. Klikněte na **New registration**
-4. Zadejte název aplikace a zaregistrujte ji
-5. Zkopírujte **Client ID** a **Tenant ID**
+Nebo stručně:
 
-### 2. Nakonfigurujte CLI
+### 1. Zaregistruj aplikaci v Azure
+
+1. Jdi na [Azure Portal](https://portal.azure.com)
+2. Vyber **Azure Active Directory** → **App registrations**
+3. Klikni na **+ New registration**
+4. Pojmenuj ji `ProPoj CLI` a zaregistruj
+5. Zkopíruj **Application (client) ID** a **Directory (tenant) ID**
+
+### 2. Přidej oprávnění (API Permissions)
+
+Přidej tyto oprávnění pro Microsoft Graph:
+- `Mail.Read`, `Mail.Send`
+- `Calendar.Read`, `Calendar.ReadWrite`
+- `Files.ReadWrite.All`
+- `User.Read`
+
+### 3. Nastav CLI
 
 ```bash
-propoj auth setup --client-id <YOUR_CLIENT_ID> --tenant-id <YOUR_TENANT_ID>
+npx propoj auth setup --client-id "<YOUR_CLIENT_ID>" --tenant-id "<YOUR_TENANT_ID>"
 ```
 
-### 3. Přihlaste se
+### 4. Přihlaš se
 
 ```bash
-propoj auth login
+npx propoj auth login
 ```
+
+Otevře se prohlížeč pro přihlášení.
 
 ## Příkazy
 
