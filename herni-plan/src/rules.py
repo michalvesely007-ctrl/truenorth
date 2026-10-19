@@ -54,7 +54,7 @@ th,td{{border:0.25mm solid #8a7356;padding:1mm 1.4mm;vertical-align:top;text-ali
 <h2>Přehled rozcestí</h2>
 <table><tr><th>Pole</th><th>Volba</th><th>Vlevo</th><th>Vpravo / rovně</th><th>Kde se cesty spojí / návrat</th></tr>
 <tr><td>{n('3')}</td><td>1–2 / 3–4 / 5–6</td><td>5–6 environmentalistika: V1–V5</td><td>3–4 ESF rovně: E1–E5 · 1–2 lesník vpravo: L1–L4</td><td>všechny tři na poli {n('7')}</td></tr>
-<tr><td>{n('22')}</td><td>lichá / sudá</td><td>Nový Zéland – slepá cesta N1–N4</td><td>domů, pole {n('29')}</td><td>z N4 zpět na {n('22')}</td></tr>
+<tr><td>{n('22')}</td><td>lichá / sudá</td><td>Nový Zéland – slepá cesta N1–N4</td><td>domů, pole {n('8')}</td><td>z N4 zpět na {n('22')}</td></tr>
 <tr><td>{n('17')}</td><td>lichá / sudá</td><td>české stromy CZ1–CZ3</td><td>Evropa EU1–EU3</td><td>obě na poli {n('20')}</td></tr>
 <tr><td>{n('21')}</td><td>ANO / NE</td><td>ANO: Brusel – slepá cesta B1–B4</td><td>NE: pole {n('30')}</td><td>z B4 zpět na {n('21')}</td></tr>
 <tr><td>{n('33')}</td><td>lichá / sudá</td><td>další firma – slepá cesta F1–F4</td><td>pole {n('34')}</td><td>z F4 zpět na {n('33')}</td></tr>

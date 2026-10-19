@@ -10,11 +10,11 @@ nebo {R:B} (rozsah políček větve, např. B1–B4). Tučně: **text**.
 TRUNK = [
     ("1", 1), ("2", 1),
     ("3", None),                                  # rozcestí -> větve L/E/V -> 7
-    ("7", 2),
+    ("7", 3),
+    ("22", 2),                                    # Nový Zéland se slepou cestou (pole 10)
     ("8", 0), ("9", 2),                           # zápisky a dívka – dvě zelená za sebou
     ("27", 2), ("28", 2),                         # přijímací pohovor do Nadace Partnerství
-    ("22", 2),                                    # Nový Zéland 2000 – hned po pohovoru
-    ("29", 3),
+    ("29", 2),
     ("10", 1), ("23", 1), ("24", 1),              # syn + Madagaskar
     ("11", 2), ("12", 2),
     ("13", 2), ("14", 2), ("15", 2), ("16", 2), ("17", None),  # -> CZ/EU -> 20
@@ -129,7 +129,7 @@ EV = {
         "Zjistím, že obojí je složité. **Slepá cesta: vrať se na pole {N:21}.**"),
 "22": ("Jedu na Nový Zéland. Přemýšlím, že tam zůstanu.", "Úkol a účinek",
        "Hoď kostkou: **lichá – doleva**, zkusím zůstat, slepá cesta {R:N} "
-       "(návrat na pole {N:22}); **sudá – doprava**, vracím se domů, pokračuju na pole {N:29}."),
+       "(návrat na pole {N:22}); **sudá – doprava**, vracím se domů, pokračuju na pole {N:8}."),
 "22B": ("Na Novém Zélandu se mi líbí až podezřele moc.", "Úkol a účinek",
         "Řeknu, co bych si vzal/a na ostrov. **Slepá cesta: vrať se na pole {N:22}.**"),
 "23": ("Na Madagaskaru zjišťuju, že expedice může být větší než můj batoh.",

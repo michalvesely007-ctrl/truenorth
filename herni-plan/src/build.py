@@ -289,7 +289,7 @@ def place_labels(tiles, ev_tile, zones, soft_zones=(), widths=(31, 36, 41, 47, 5
     TR = np.array([t["r"] for t in tiles])
     TCLR = 1.0 + 0.9
     angs = np.radians(np.arange(0, 360, 6))
-    dists = np.array([1.2, 3, 6, 10, 15, 21, 28, 36, 45, 55])
+    dists = np.array([3.5, 5, 7, 10, 15, 21, 28, 36, 45, 55])
     data = {}
     for t in greens:
         lays = [layout_label(t, ev_tile, w) for w in widths]
@@ -331,7 +331,7 @@ def place_labels(tiles, ev_tile, zones, soft_zones=(), widths=(31, 36, 41, 47, 5
         soft = np.zeros(len(C))
         for z in soft_zones:
             soft += 8 * ~((C[:, 2] <= z[0]) | (z[2] <= C[:, 0]) | (C[:, 3] <= z[1]) | (z[3] <= C[:, 1]))
-        score = dl + area * 0.004 + soft + np.where(C[:, 5] <= 3, 0, 2)
+        score = dl + area * 0.004 + soft + np.where(C[:, 5] <= 5, 0, 2)
         if noise:
             score = score + np.random.default_rng(seed + len(data)).random(len(score)) * noise
         order = np.argsort(score)

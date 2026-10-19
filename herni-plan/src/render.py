@@ -141,8 +141,9 @@ def label_svg(t, c):
     r = c["rect"]
     lay = c["lay"]
     o = []
-    o.append(f'<line x1="{c["start"][0]:.2f}" y1="{c["start"][1]:.2f}" x2="{c["a"][0]:.2f}" y2="{c["a"][1]:.2f}" stroke="{INK}" stroke-width="0.35"/>')
-    o.append(f'<circle cx="{c["start"][0]:.2f}" cy="{c["start"][1]:.2f}" r="0.55" fill="{INK}"/>')
+    o.append(f'<line x1="{c["start"][0]:.2f}" y1="{c["start"][1]:.2f}" x2="{c["a"][0]:.2f}" y2="{c["a"][1]:.2f}" stroke="{INK}" stroke-width="0.45"/>')
+    o.append(f'<circle cx="{c["start"][0]:.2f}" cy="{c["start"][1]:.2f}" r="0.75" fill="{INK}"/>')
+    o.append(f'<circle cx="{c["a"][0]:.2f}" cy="{c["a"][1]:.2f}" r="0.55" fill="{INK}"/>')
     o.append(f'<rect x="{r[0]:.2f}" y="{r[1]:.2f}" width="{lay["w"]:.2f}" height="{lay["h"]:.2f}" rx="1.2" fill="{CREAM}" fill-opacity="0.94" stroke="{INK}" stroke-width="0.3"/>')
     x0 = r[0] + B.PAD
     y = r[1] + B.PAD + B.FS * 0.82
