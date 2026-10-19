@@ -1,0 +1,37 @@
+Očíslovaná pole hlavní trasy: 150 (1 až 150 )
+Zelená pole celkem: 69 | na hlavní trase: 55 | ve větvích: 14
+Popisky: 69 umístěno, řádků 2–11, písmo 8 pt (=2.82 mm)
+  větev  L z pole   5 (vlevo): 4 polí, spojení na 6
+  větev  E z pole   5 (rovně): 5 polí, spojení na 6
+  větev  V z pole   5 (vpravo): 5 polí, spojení na 6
+  větev CZ z pole  50 (vlevo): 3 polí, spojení na 51
+  větev EU z pole  50 (vpravo): 3 polí, spojení na 51
+  větev  P z pole 149 (vlevo): 9 polí, spojení na 150
+  větev  O z pole 149 (vpravo): 11 polí, spojení na 150
+  větev  B z pole  54 (vlevo): 4 polí, slepá → zpět na 54
+  větev  N z pole  20 (vlevo): 4 polí, slepá → zpět na 20
+  větev  F z pole  66 (vlevo): 4 polí, slepá → zpět na 66
+  větev  S z pole  78 (vlevo): 4 polí, slepá → zpět na 78
+  větev  Z z pole 131 (vlevo): 4 polí, slepá → zpět na 131
+Závěr: za 59P hnědých 8 | za 59O hnědých 10
+  otázka  5E: OK
+  otázka   9: OK
+  otázka  21: OK
+  otázka  30: OK
+  otázka  38: OK
+  otázka  47: OK
+Herní účinky:
+  házím znovu: pole 146
+  posunu se o 1: pole 38, 128, 57, 81, 113
+  posunu se o 2: pole E2, E4, 12, 12, 41, 47, EU2, 28, 69, 84, 99, 107, 116, 125
+  posunu se o 3: pole 17, 90
+  posunu se o 6: pole 146
+  přesný počet: pole 150
+  stojím dvě kola: pole 110
+  stojím jedno kolo: pole 93
+  vrátím se o 1: pole E2, 81, 107
+  vrátím se o 2: pole 6, 72, 122
+  vrátím se o 3: pole 63
+  zůstávám tu jedno kolo: pole 35
+
+VŠECHNY KONTROLY PROŠLY
