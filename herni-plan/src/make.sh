@@ -3,6 +3,7 @@
 set -e
 cd "$(dirname "$0")"
 export PYTHONHASHSEED=1
+python3 prep_bg.py
 python3 render.py
 python3 check.py | tee ../tisk/kontrola_vystup.txt
 python3 pages.py

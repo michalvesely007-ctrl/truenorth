@@ -223,7 +223,7 @@ def main(out_svg="board.svg", out_json="layout.json", bg="podklad_150dpi.jpg"):
             tag_rects.append(rect2)
 
     zones = [TITLE, LEGEND, DICE, (START[0] - START[2] - 2, START[1] - START[2] - 2, START[0] + START[2] + 2, START[1] + START[2] + 2)]
-    zones += tag_rects
+    zones += tag_rects + HEADS[:2]   # Michal a Katka (horolezci) musí zůstat vidět
     fin = by_ev["60"]
     zones.append((fin["x"] - 19, fin["y"] - 19, fin["x"] + 19, fin["y"] + 19))
     prio = ["8", "E2", "E4", "L3", "V2", "V4", "5", "N4"]
