@@ -29,7 +29,7 @@ START = (40, 342, 13)               # střed a poloměr startu
 # hlavy postav v podkladu – popisky ani štítky je nesmějí zakrýt
 HEADS = [(8, 106, 27, 124), (25, 176, 43, 194), (17, 266, 42, 296), (229, 288, 246, 305),
          (255, 296, 273, 313), (68, 310, 83, 325), (430, 342, 447, 360), (518, 246, 535, 262)]
-SOFT = []                            # měkké zóny (nyní žádné – chrání se hlavy postav)
+SOFT = []                            # měkké zóny – doplní se hlavami postav níže
 
 
 def esc(s):
@@ -223,7 +223,7 @@ def main(out_svg="board.svg", out_json="layout.json", bg="podklad_150dpi.jpg"):
             tag_rects.append(rect2)
 
     zones = [TITLE, LEGEND, DICE, (START[0] - START[2] - 2, START[1] - START[2] - 2, START[0] + START[2] + 2, START[1] + START[2] + 2)]
-    zones += tag_rects + HEADS
+    zones += tag_rects
     fin = by_ev["60"]
     zones.append((fin["x"] - 19, fin["y"] - 19, fin["x"] + 19, fin["y"] + 19))
     prio = ["8", "E2", "E4", "L3", "V2", "V4", "5", "N4"]
@@ -231,14 +231,14 @@ def main(out_svg="board.svg", out_json="layout.json", bg="podklad_150dpi.jpg"):
     import random
     rnd = random.Random(7)
     for it in range(150):
-        placed = B.place_labels(tiles, ev_tile, zones, soft_zones=SOFT, priority=prio, noise=(0 if it < 10 else 3 + (it % 5) * 3), seed=it)
+        placed = B.place_labels(tiles, ev_tile, zones, soft_zones=SOFT + HEADS, priority=prio, noise=(0 if it < 10 else 3 + (it % 5) * 3), seed=it)
         miss = [k for k, v in placed.items() if v is None]
         if best is None or len(miss) < best[0]:
             best = (len(miss), placed, list(prio), it)
         if not miss:
             break
         if False:
-            placed = B.place_labels(tiles, ev_tile, zones, soft_zones=SOFT, priority=prio, repair=True)
+            placed = B.place_labels(tiles, ev_tile, zones, soft_zones=SOFT + HEADS, priority=prio, repair=True)
             miss = [k for k, v in placed.items() if v is None]
             if len(miss) < best[0]:
                 best = (len(miss), placed)
@@ -249,7 +249,7 @@ def main(out_svg="board.svg", out_json="layout.json", bg="podklad_150dpi.jpg"):
             rnd.shuffle(prio)
     if best[0]:
         _, _, bp, bit = best
-        rp = B.place_labels(tiles, ev_tile, zones, soft_zones=SOFT, priority=bp,
+        rp = B.place_labels(tiles, ev_tile, zones, soft_zones=SOFT + HEADS, priority=bp,
                             noise=(0 if bit < 10 else 3 + (bit % 5) * 3), seed=bit, repair=True)
         if sum(v is None for v in rp.values()) < best[0]:
             best = (sum(v is None for v in rp.values()), rp)

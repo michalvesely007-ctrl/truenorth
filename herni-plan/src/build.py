@@ -175,7 +175,7 @@ def build_geometry():
 
 # amplitudy větví (mm) a parametry slepých odboček (natočení°, zakřivení° na rozteč)
 SPEC_AMP = {"L": 41, "V": 40, "E": 0, "CZ": 16, "EU": 16, "P": 38, "O": 27}
-SPUR_FIX = {"N": (-15, -12)}
+SPUR_FIX = {}
 SPUR_AVOID = [(0, 105, 52, 240), (205, 298, 290, 336)]
 SPURS = {"B": (-35, 30), "N": (25, -30), "F": (-30, 25), "S": (20, -25), "Z": (0, 30)}
 
