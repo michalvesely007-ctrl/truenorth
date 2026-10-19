@@ -24,10 +24,12 @@ text{font-family:'Carlito',sans-serif;}
 # ---------------------------------------------------------------- pevné zóny
 TITLE = (318, 6, 548, 42)            # kartuš s názvem
 LEGEND = (8, 6, 112, 56)            # legenda a stručná pravidla
-DICE = (236, 200, 318, 232)          # prostor pro hod kostkou
-START = (40, 350, 13)
-# místa ilustrace, která mají zůstat vidět (horolezci, vodopád, kanoe, srnka)
-SOFT = [(0, 105, 52, 240), (205, 298, 290, 336), (515, 245, 545, 275)]               # střed a poloměr startu
+DICE = (240, 196, 304, 222)          # prostor pro hod kostkou
+START = (40, 342, 13)               # střed a poloměr startu
+# hlavy postav v podkladu – popisky ani štítky je nesmějí zakrýt
+HEADS = [(8, 106, 27, 124), (25, 176, 43, 194), (17, 266, 42, 296), (229, 288, 246, 305),
+         (255, 296, 273, 313), (68, 310, 83, 325), (430, 342, 447, 360), (518, 246, 535, 262)]
+SOFT = []                            # měkké zóny (nyní žádné – chrání se hlavy postav)
 
 
 def esc(s):
@@ -178,6 +180,7 @@ def main(out_svg="board.svg", out_json="layout.json", bg="podklad_150dpi.jpg"):
     trunk = [t for t in tiles if t["trunk"]]
 
     o_conn, o_tags, tag_rects = [], [], []
+    head_rects = list(HEADS)
     # spojnice hlavní trasy (jen mezi sousedy, ne přes rozcestí se slučováním)
     for a, b in zip(trunk, trunk[1:]):
         if a["ev"] in ("3", "17", "58"):
@@ -195,12 +198,12 @@ def main(out_svg="board.svg", out_json="layout.json", bg="podklad_150dpi.jpg"):
         # štítek směru na začátku větve
         fork_ev = br["fork"]
         if fork_ev == "3":
-            txt = {"L": "1–2 ◄ LES", "S": "3–4 ▲ ESF", "R": "ENVIRO ► 5–6"}[br["side"]]
+            txt = {"L": "5–6 ◄ ENVIRO", "S": "3–4 ▲ ESF", "R": "LES ► 1–2"}[br["side"]]
         elif fork_ev == "21":
             txt = {"L": "ANO ◄ VLEVO", "R": "NE ► VPRAVO"}[br["side"]]
         else:
             txt = {"L": "LICHÁ ◄ VLEVO", "R": "SUDÁ ► VPRAVO"}[br["side"]]
-        svg, rect = place_tag(txt, f, t1, tiles, tag_rects, br["side"])
+        svg, rect = place_tag(txt, f, t1, tiles, tag_rects + head_rects, br["side"])
         o_tags.append(svg)
         tag_rects.append(rect)
         if br["back"]:
@@ -220,23 +223,36 @@ def main(out_svg="board.svg", out_json="layout.json", bg="podklad_150dpi.jpg"):
             tag_rects.append(rect2)
 
     zones = [TITLE, LEGEND, DICE, (START[0] - START[2] - 2, START[1] - START[2] - 2, START[0] + START[2] + 2, START[1] + START[2] + 2)]
-    zones += tag_rects
+    zones += tag_rects + HEADS
     fin = by_ev["60"]
     zones.append((fin["x"] - 19, fin["y"] - 19, fin["x"] + 19, fin["y"] + 19))
-    prio = []
+    prio = ["8", "E2", "E4", "L3", "V2", "V4", "5", "N4"]
     best = None
     import random
     rnd = random.Random(7)
-    for it in range(40):
-        placed = B.place_labels(tiles, ev_tile, zones, soft_zones=SOFT, priority=prio)
+    for it in range(150):
+        placed = B.place_labels(tiles, ev_tile, zones, soft_zones=SOFT, priority=prio, noise=(0 if it < 10 else 3 + (it % 5) * 3), seed=it)
         miss = [k for k, v in placed.items() if v is None]
         if best is None or len(miss) < best[0]:
-            best = (len(miss), placed)
+            best = (len(miss), placed, list(prio), it)
         if not miss:
             break
+        if False:
+            placed = B.place_labels(tiles, ev_tile, zones, soft_zones=SOFT, priority=prio, repair=True)
+            miss = [k for k, v in placed.items() if v is None]
+            if len(miss) < best[0]:
+                best = (len(miss), placed)
+            if not miss:
+                break
         prio = miss + [p for p in prio if p not in miss]
         if it % 4 == 3:
             rnd.shuffle(prio)
+    if best[0]:
+        _, _, bp, bit = best
+        rp = B.place_labels(tiles, ev_tile, zones, soft_zones=SOFT, priority=bp,
+                            noise=(0 if bit < 10 else 3 + (bit % 5) * 3), seed=bit, repair=True)
+        if sum(v is None for v in rp.values()) < best[0]:
+            best = (sum(v is None for v in rp.values()), rp)
     placed = best[1]
 
     o = []
@@ -287,14 +303,14 @@ def decorations():
     x0, y0, x1, y1 = DICE
     cx, cy = (x0 + x1) / 2, (y0 + y1) / 2
     o.append(f'<ellipse cx="{cx}" cy="{cy}" rx="{(x1 - x0) / 2}" ry="{(y1 - y0) / 2}" fill="{CREAM}" fill-opacity="0.55" stroke="{INK}" stroke-width="0.5" stroke-dasharray="2 1.2"/>')
-    o.append(f'<text x="{cx}" y="{cy - 2}" font-family="Caladea" font-size="7" font-weight="bold" font-style="italic" text-anchor="middle" fill="{INK}">Sem házej kostkou</text>')
+    o.append(f'<text x="{cx}" y="{cy - 1}" font-family="Caladea" font-size="5" font-weight="bold" font-style="italic" text-anchor="middle" fill="{INK}">Sem házej kostkou</text>')
     o.append(f'<text x="{cx}" y="{cy + 5}" font-size="3.4" text-anchor="middle" fill="{INK}">lichá ◄ vlevo · sudá ► vpravo</text>')
-    for k, (dx, pipn) in enumerate(((-30, 5), (30, 2))):
-        bx, by = cx + dx - 4, cy + 7
-        o.append(f'<rect x="{bx}" y="{by}" width="8" height="8" rx="1.5" fill="#fff" stroke="{INK}" stroke-width="0.4"/>')
-        pips = {5: [(2, 2), (6, 2), (4, 4), (2, 6), (6, 6)], 2: [(2, 2), (6, 6)]}[pipn]
+    for k, (dx, pipn) in enumerate(((-25.5, 5), (25.5, 2))):
+        bx, by = cx + dx - 3, cy - 3
+        o.append(f'<rect x="{bx}" y="{by}" width="6" height="6" rx="1.1" fill="#fff" stroke="{INK}" stroke-width="0.35"/>')
+        pips = {5: [(1.5, 1.5), (4.5, 1.5), (3, 3), (1.5, 4.5), (4.5, 4.5)], 2: [(1.5, 1.5), (4.5, 4.5)]}[pipn]
         for px_, py_ in pips:
-            o.append(f'<circle cx="{bx + px_}" cy="{by + py_}" r="0.75" fill="{INK}"/>')
+            o.append(f'<circle cx="{bx + px_}" cy="{by + py_}" r="0.55" fill="{INK}"/>')
     # legenda
     x0, y0, x1, y1 = LEGEND
     o.append(f'<rect x="{x0}" y="{y0}" width="{x1 - x0}" height="{y1 - y0}" rx="2.5" fill="{CREAM}" fill-opacity="0.93" stroke="{INK}" stroke-width="0.4"/>')

@@ -1,29 +1,31 @@
 # Cesta šťastným životem – kontrolní seznam
 
-Vygenerováno skriptem `src/check.py`; úplný výstup je v `kontrola_vystup.txt`.
+Vygenerováno skriptem `src/checklist.py`; výstup automatických kontrol je v `kontrola_vystup.txt`.
 
 * Očíslovaná pole hlavní trasy: **150** (1–150, souvisle)
-* Zelená pole: **69** (55 na hlavní trase + 14 ve větvích): 68 polí ze zadání + Ladakh (doplněno na přání autora), takže nebiografické doplňkové pole odpadlo
-* Závěrečné větve: P1 + **8** hnědých, O1 + **10** hnědých, obě vedou do cíle 150
-* Překryvy políček, popisků a vodicích čar: **0**; žádný popisek nepřechází přes spoj listů A3
-* Písmo popisků: 8 pt při tisku 2× A3 (100 %), na A2 vychází 8,6 pt
+* Zelená pole: **69** (55 na hlavní trase + 14 ve větvích) = 68 polí ze zadání + Ladakh
+* Závěrečné větve: P1 + **8** hnědých, O1 + **10** hnědých, obě do cíle 150
+* Překryvy políček, popisků a vodicích čar: **0**; popisky nezakrývají hlavy postav v podkladu ani nepřechází přes spoj listů A3
+* Písmo popisků 8 pt při tisku 2× A3 (100 %), na A2 8,6 pt
 
-## Pořadí cest v čase (podle autora)
-Nový Zéland 2000 při nástupu do Nadace Partnerství (pole 20) → Madagaskar při narození syna (28) → Annapurna před třemi lety (128) → Kanada a Aljaška v rámci sabatiklu (134) → Ladakh letos, šestitisícovka (146)
+## Časová posloupnost cest
+Nový Zéland před studiem environmentalistiky (pole 5) → Madagaskar při narození syna (28) → Annapurna před třemi lety (128) → Kanada a Aljaška v rámci sabatiklu (134) → Ladakh letos, šestitisícovka (146)
+
+Zápisky za čokoládu (12) a „Dívka si myslí, že ji balím“ (13) jsou dvě zelená pole hned za sebou.
 
 ## Mapa polí
 | Pole na plánu | Událost (id ze zadání) | Text pole |
 |---|---|---|
 | 1 | 1 | Babička mě poprvé bere do Vysokých Tater. |
 | 3 | 2 | Chci být lesníkem. |
-| 5 | 3 | Rozcestí: les, ekonomie, nebo environmentalistika? |
-| 6 | 7 | Studium environmentalistiky nestíhám. |
-| 9 | 8 | Vyměňuju zápisky z přednášek za čokoládu. |
-| 12 | 9 | Dívka si myslí, že ji balím. Vezme si mě. |
-| 14 | 27 | Jdu na pohovor do Nadace Partnerství. Rozumím asi dvěma třetinám otázek. |
-| 17 | 28 | Pohovor vyhrávám. |
-| 20 | 22 | Jedu na Nový Zéland. Přemýšlím, že tam zůstanu. |
-| 23 | 29 | V Nadaci Partnerství se potkávají les, ekonomie i environmentalistika. |
+| 5 | 22 | Jedu na Nový Zéland. Přemýšlím, že tam zůstanu. |
+| 8 | 3 | Rozcestí: les, ekonomie, nebo environmentalistika? |
+| 9 | 7 | Studium environmentalistiky nestíhám. |
+| 12 | 8 | Vyměňuju zápisky z přednášek za čokoládu. |
+| 13 | 9 | Dívka si myslí, že ji balím. Vezme si mě. |
+| 16 | 27 | Jdu na pohovor do Nadace Partnerství. Rozumím asi dvěma třetinám otázek. |
+| 19 | 28 | Pohovor vyhrávám. |
+| 22 | 29 | V Nadaci Partnerství se potkávají les, ekonomie i environmentalistika. |
 | 26 | 10 | Narodí se nám syn. |
 | 28 | 23 | Na Madagaskaru zjišťuju, že expedice může být větší než můj batoh. |
 | 30 | 24 | Na expedici hledám dobrodružství, ne signál. |

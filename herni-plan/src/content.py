@@ -8,11 +8,13 @@ nebo {R:B} (rozsah políček větve, např. B1–B4). Tučně: **text**.
 # Pořadí hlavní trasy: id událostí a počet hnědých polí ZA nimi.
 # 'X' = doplněné nebiografické hráčské pole (68 + 1 = 69).
 TRUNK = [
-    ("1", 1), ("2", 1), ("3", None),             # rozcestí -> větve L/E/V -> 7
-    ("7", 2), ("8", 2), ("9", 1),
-    ("27", 2), ("28", 2),                         # nástup do Nadace Partnerství 2000
-    ("22", 2),                                    # Nový Zéland 2000 – první cesta
-    ("29", 2),
+    ("1", 1), ("2", 1),
+    ("22", 2),                                    # Nový Zéland – před studiem environmentalistiky
+    ("3", None),                                  # rozcestí -> větve L/E/V -> 7
+    ("7", 2),
+    ("8", 0), ("9", 2),                           # zápisky a dívka – dvě zelená za sebou
+    ("27", 2), ("28", 2),                         # nástup do Nadace Partnerství
+    ("29", 3),
     ("10", 1), ("23", 1), ("24", 1),              # syn + Madagaskar
     ("11", 2), ("12", 2),
     ("13", 2), ("14", 2), ("15", 2), ("16", 2), ("17", None),  # -> CZ/EU -> 20
@@ -35,11 +37,11 @@ TRUNK = [
 # Větve: kód, rozcestí, cíl (spojení nebo návrat), strana, seznam políček
 # (None = hnědé pole, jinak id události)
 BRANCHES = [
-    dict(code="L", name="lesní cesta", fork="3", join="7", side="L",
+    dict(code="L", name="lesní cesta", fork="3", join="7", side="R",
          tiles=[None, None, "4L", None]),
     dict(code="E", name="cesta ESF", fork="3", join="7", side="S",
          tiles=[None, "5E", None, "6E", None]),
-    dict(code="V", name="environmentalistika", fork="3", join="7", side="R",
+    dict(code="V", name="environmentalistika", fork="3", join="7", side="L",
          tiles=[None, "4V", None, "5V", None]),
     dict(code="CZ", name="české stromy", fork="17", join="20", side="L",
          tiles=[None, "18", None]),
@@ -69,8 +71,8 @@ EV = {
       "Udělám tři kroky do kopce."),
 "2": ("Chci být lesníkem.", "Úkol", "Zatvářím se jako přísný lesník."),
 "3": ("Rozcestí: les, ekonomie, nebo environmentalistika?", "Úkol a účinek",
-      "Hoď kostkou: **1–2 lesník** – doleva {R:L}; **3–4 ESF** – rovně {R:E}; "
-      "**5–6 environmentalistika** – doprava {R:V}. Jdi na odpovídající cestu. "
+      "Hoď kostkou: **1–2 lesník** – doprava; **3–4 ESF** – rovně; "
+      "**5–6 environmentalistika** – doleva. Jdi na odpovídající cestu. "
       "Všechny tři se spojí na poli {N:7}."),
 "4L": ("V lese znám každý strom. Skoro.", "Úkol a účinek",
        "Pojmenuju jeden strom. Kdo řekne jiný, **posune se o 1**. "
@@ -127,7 +129,7 @@ EV = {
         "Zjistím, že obojí je složité. **Slepá cesta: vrať se na pole {N:21}.**"),
 "22": ("Jedu na Nový Zéland. Přemýšlím, že tam zůstanu.", "Úkol a účinek",
        "Hoď kostkou: **lichá – doleva**, zkusím zůstat, slepá cesta {R:N} "
-       "(návrat na pole {N:22}); **sudá – doprava**, vracím se domů, pokračuju na pole {N:29}."),
+       "(návrat na pole {N:22}); **sudá – doprava**, vracím se domů, pokračuju na pole {N:3}."),
 "22B": ("Na Novém Zélandu se mi líbí až podezřele moc.", "Úkol a účinek",
         "Řeknu, co bych si vzal/a na ostrov. **Slepá cesta: vrať se na pole {N:22}.**"),
 "23": ("Na Madagaskaru zjišťuju, že expedice může být větší než můj batoh.",

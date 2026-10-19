@@ -13,8 +13,8 @@ from numbering import build as build_numbering
 W, H = 554.0, 392.0           # deska v mm
 PT = 25.4 / 72                # 1 pt v mm
 FS = 8 * PT                   # 8 pt
-LH = FS * 1.13                # řádkování
-PAD = 1.3
+LH = FS * 1.09                # řádkování
+PAD = 1.05
 PITCH = 12.6                  # rozteč polí hlavní trasy
 R_T = 5.7                     # poloměr pole hlavní trasy
 R_B = 5.1                     # poloměr pole ve větvi
@@ -73,8 +73,8 @@ def left_normal(tg):
 # Hlavní trasa – ručně laděné body (mm). Klikatá cesta krajinou:
 # start dole vlevo u turisty, cíl nahoře vlevo pod horami.
 WAYPOINTS = [
-    (66, 350), (100, 350), (135, 350), (170, 350), (205, 350), (236, 356),
-    (262, 366), (300, 362), (338, 346), (372, 344), (408, 358), (446, 364),
+    (66, 342), (100, 342), (135, 342), (170, 342), (205, 343), (236, 350),
+    (262, 362), (300, 362), (338, 346), (372, 344), (408, 358), (446, 364),
     (482, 352), (512, 326), (520, 296), (506, 268), (476, 254),
     (440, 262), (404, 276), (368, 272), (338, 252), (306, 240), (272, 250),
     (240, 266), (204, 266), (172, 248), (142, 236), (110, 240), (80, 252),
@@ -83,7 +83,7 @@ WAYPOINTS = [
     (302, 176), (336, 178), (368, 160), (398, 146), (432, 150), (466, 162),
     (496, 150), (514, 124), (508, 96), (482, 80), (450, 84),
     (418, 98), (384, 102), (352, 88), (320, 76), (286, 82), (252, 98),
-    (218, 102), (186, 88), (156, 78), (124, 82), (94, 96), (70, 118), (60, 134),
+    (218, 102), (186, 88), (156, 78), (124, 82), (94, 96), (70, 118), (58, 136), (54, 146),
 ]
 
 
@@ -91,7 +91,7 @@ def build_geometry():
     trunk, branches, ev_tile = build_numbering()
     curve = Curve(catmull(WAYPOINTS, 60))
     # pozice podél trasy (v roztečích); za rozcestím se slučujícími větvemi mezera
-    gap_after = {"3": 7, "17": 5, "58": 9}
+    gap_after = {"3": 10, "17": 4, "58": 9}
     s = 0.0
     for t in trunk:
         t["s"] = s
@@ -139,8 +139,9 @@ def build_geometry():
             pos = [f["r"] + R_B + 2.0 + step * k for k in range(n)]
             OX = np.array([t["x"] for t in tiles if t is not f]); OY = np.array([t["y"] for t in tiles if t is not f])
             best = None
-            for off in range(-75, 76, 5):
-                for curv in range(-45, 46, 5):
+            offs = [SPUR_FIX[b['code']][0]] if b['code'] in SPUR_FIX else range(-75, 76, 5)
+            for off in offs:
+                for curv in ([SPUR_FIX[b['code']][1]] if b['code'] in SPUR_FIX else range(-45, 46, 5)):
                     ang = math.atan2(tg0[1], tg0[0]) - math.pi / 2 + math.radians(off)
                     pts = [p0.copy()]; q = p0.copy()
                     for k in range(int((pos[-1] + 16) / 0.5)):
@@ -173,7 +174,8 @@ def build_geometry():
 
 
 # amplitudy větví (mm) a parametry slepých odboček (natočení°, zakřivení° na rozteč)
-SPEC_AMP = {"L": 24, "V": 24, "E": 0, "CZ": 16, "EU": 16, "P": 38, "O": 27}
+SPEC_AMP = {"L": 41, "V": 40, "E": 0, "CZ": 16, "EU": 16, "P": 38, "O": 27}
+SPUR_FIX = {"N": (-15, -12)}
 SPUR_AVOID = [(0, 105, 52, 240), (205, 298, 290, 336)]
 SPURS = {"B": (-35, 30), "N": (25, -30), "F": (-30, 25), "S": (20, -25), "Z": (0, 30)}
 
@@ -281,13 +283,13 @@ def nearest_on_rect(r, x, y):
     return (min(max(x, r[0]), r[2]), min(max(y, r[1]), r[3]))
 
 
-def place_labels(tiles, ev_tile, zones, soft_zones=(), widths=(31, 36, 41, 47, 55, 64, 74, 84), priority=()):
+def place_labels(tiles, ev_tile, zones, soft_zones=(), widths=(31, 36, 41, 47, 55, 64, 74, 86, 100), priority=(), repair=False, noise=0.0, seed=0):
     greens = [t for t in tiles if t["ev"]]
     TX = np.array([t["x"] for t in tiles]); TY = np.array([t["y"] for t in tiles])
     TR = np.array([t["r"] for t in tiles])
-    TCLR = 1.0 + 1.6
+    TCLR = 1.0 + 0.9
     angs = np.radians(np.arange(0, 360, 6))
-    dists = np.array([1.2, 3, 6, 10, 15, 21, 28, 36, 45, 55, 66])
+    dists = np.array([1.2, 3, 6, 10, 15, 21, 28, 36, 45, 55])
     data = {}
     for t in greens:
         lays = [layout_label(t, ev_tile, w) for w in widths]
@@ -330,6 +332,8 @@ def place_labels(tiles, ev_tile, zones, soft_zones=(), widths=(31, 36, 41, 47, 5
         for z in soft_zones:
             soft += 8 * ~((C[:, 2] <= z[0]) | (z[2] <= C[:, 0]) | (C[:, 3] <= z[1]) | (z[3] <= C[:, 1]))
         score = dl + area * 0.004 + soft + np.where(C[:, 5] <= 3, 0, 2)
+        if noise:
+            score = score + np.random.default_rng(seed + len(data)).random(len(score)) * noise
         order = np.argsort(score)
         data[t["label"]] = dict(t=t, lays=lays, C=C[order], seg=np.stack([sx, sy, ax, ay], 1)[order],
                                 alive=np.ones(len(order), bool))
@@ -339,7 +343,7 @@ def place_labels(tiles, ev_tile, zones, soft_zones=(), widths=(31, 36, 41, 47, 5
 
     def kill(d, r, seg):
         C, S = d["C"], d["seg"]
-        pad = 1.2
+        pad = 1.0
         ov = ~((C[:, 2] + pad <= r[0]) | (r[2] + pad <= C[:, 0]) | (C[:, 3] + pad <= r[1]) | (r[3] + pad <= C[:, 1]))
         px = S[:, 0:1] + (S[:, 2:3] - S[:, 0:1]) * ts; py = S[:, 1:2] + (S[:, 3:4] - S[:, 1:2]) * ts
         l1 = ((px >= r[0] - .4) & (px <= r[2] + .4) & (py >= r[1] - .4) & (py <= r[3] + .4)).any(axis=1)
@@ -370,4 +374,54 @@ def place_labels(tiles, ev_tile, zones, soft_zones=(), widths=(31, 36, 41, 47, 5
         placed[lab] = dict(rect=r, lay=lay, start=(seg[0], seg[1]), a=(seg[2], seg[3]))
         for k in remaining:
             kill(data[k], r, seg)
+
+    # oprava: neumístěný popisek zkusí odsunout 1–2 sousední popisky jinam
+    def conflict(r1, s1, r2, s2):
+        tmp = dict(C=np.array([list(r1) + [0, 0]]), seg=np.array([s1]), alive=np.ones(1, bool))
+        kill(tmp, r2, s2)
+        return not tmp["alive"][0]
+
+    def alive_for(lab, exclude, extra):
+        d = data[lab]
+        d["alive"] = np.ones(len(d["C"]), bool)
+        for k, p in placed.items():
+            if p is None or k in exclude:
+                continue
+            kill(d, p["rect"], np.array([*p["start"], *p["a"]]))
+        for (r, s) in extra:
+            kill(d, r, s)
+        return np.flatnonzero(d["alive"])
+
+    def as_place(lab, i):
+        d = data[lab]
+        return dict(rect=tuple(d["C"][i, :4]), lay=d["lays"][int(d["C"][i, 4])],
+                    start=(d["seg"][i][0], d["seg"][i][1]), a=(d["seg"][i][2], d["seg"][i][3]))
+
+    for m in [k for k, v in placed.items() if v is None and repair]:
+        dm = data[m]
+        done = False
+        for i in range(min(len(dm["C"]), 250)):
+            rm, sm = tuple(dm["C"][i, :4]), dm["seg"][i]
+            confl = [k for k, p in placed.items() if p is not None and
+                     conflict(rm, sm, p["rect"], np.array([*p["start"], *p["a"]]))]
+            if not confl or len(confl) > 2:
+                if not confl:
+                    placed[m] = as_place(m, i); done = True; break
+                continue
+            new = {}
+            extra = [(rm, sm)]
+            ok_all = True
+            for k in confl:
+                idx = alive_for(k, set(confl), extra)
+                if len(idx) == 0:
+                    ok_all = False; break
+                new[k] = as_place(k, idx[0])
+                extra.append((new[k]["rect"], np.array([*new[k]["start"], *new[k]["a"]])))
+            if ok_all:
+                placed.update(new)
+                placed[m] = as_place(m, i)
+                done = True
+                break
+        if done:
+            print("oprava: umístěn", m)
     return placed
