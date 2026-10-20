@@ -9,7 +9,7 @@ html = f"""<!doctype html><html lang="cs"><head><meta charset="utf-8"><style>
 @font-face{{font-family:'Carlito';src:url('file:///usr/share/fonts/truetype/crosextra/Carlito-Regular.ttf');}}
 @font-face{{font-family:'Carlito';font-weight:bold;src:url('file:///usr/share/fonts/truetype/crosextra/Carlito-Bold.ttf');}}
 @font-face{{font-family:'Carlito';font-style:italic;src:url('file:///usr/share/fonts/truetype/crosextra/Carlito-Italic.ttf');}}
-body{{font-family:Carlito,sans-serif;font-size:9.5pt;line-height:1.26;color:#3a2716;margin:0}}
+body{{font-family:Carlito,sans-serif;font-size:9.2pt;line-height:1.24;color:#3a2716;margin:0}}
 h1{{font-size:21pt;font-style:italic;margin:0 0 1mm}} .sub{{font-style:italic;font-size:12pt;margin-bottom:2mm}}
 h2{{font-size:12.5pt;margin:2.6mm 0 1mm;border-bottom:0.3mm solid #3a2716}}
 ul,ol{{margin:0.5mm 0 1mm 5mm;padding-left:3mm}} li{{margin:0.4mm 0}}
