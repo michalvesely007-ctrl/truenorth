@@ -9,7 +9,7 @@ Vygenerováno skriptem `src/checklist.py`; výstup automatických kontrol je v `
 * Písmo popisků 8 pt při tisku 2× A3 (100 %), na A2 8,6 pt
 
 ## Časová posloupnost cest
-Nový Zéland po studiu environmentalistiky (pole 10) → Madagaskar při narození syna (28) → Annapurna před třemi lety (128) → Kanada a Aljaška v rámci sabatiklu (134) → Ladakh letos, šestitisícovka (146)
+Nový Zéland po studiu environmentalistiky (pole 10) → Madagaskar při narození syna (28) → Annapurna před třemi lety (128) → Kanada a Aljaška v rámci sabatiklu (134) → Ladakh letos, šestitisícovka (143)
 
 Zápisky za čokoládu (13) a „Dívka si myslí, že ji balím“ (14) jsou dvě zelená pole hned za sebou.
 
@@ -66,9 +66,9 @@ Zápisky za čokoládu (13) a „Dívka si myslí, že ji balím“ (14) jsou dv
 | 131 | 54 | Dávám si sabatikl a přemýšlím o životě v zahraničí. |
 | 134 | 25 | Vyrážím na další cesty: Andy, Pamír, Aljaška i další kouty světa. |
 | 137 | 55 | Nacházím si kouče a jdu studovat koučink. |
-| 140 | 56 | Hlásím se do vedení Podnikání s přesahem. |
-| 143 | 57 | Zakládám OwnerCompass. |
-| 146 | LA | Letos beru obě děti do Ladakhu a společně vystoupáme na šestitisícovku. Signál zůstal dole. |
+| 143 | LA | Letos beru obě děti do Ladakhu a společně vystoupáme na šestitisícovku. Signál zůstal dole. |
+| 146 | 56 | Hlásím se do vedení Podnikání s přesahem. |
+| 147 | 57 | Zakládám OwnerCompass. |
 | 149 | 58 | Rozcestí: Podnikání s přesahem, nebo OwnerCompass? |
 | 150 | 60 | Šťastný život? |
 | L3 | 4L | V lese znám každý strom. Skoro. |

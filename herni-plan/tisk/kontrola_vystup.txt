@@ -22,11 +22,11 @@ Závěr: za 59P hnědých 8 | za 59O hnědých 10
   otázka  38: OK
   otázka  47: OK
 Herní účinky:
-  házím znovu: pole 146
+  házím znovu: pole 143
   posunu se o 1: pole 38, 128, 57, 81, 113
   posunu se o 2: pole E2, E4, 14, 14, 41, 47, EU2, 28, 69, 84, 99, 107, 116, 125
   posunu se o 3: pole 20, 90
-  posunu se o 6: pole 146
+  posunu se o 6: pole 143
   přesný počet: pole 150
   stojím dvě kola: pole 110
   stojím jedno kolo: pole 93

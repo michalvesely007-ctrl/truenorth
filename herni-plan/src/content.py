@@ -27,9 +27,10 @@ TRUNK = [
     ("26", 2),                                    # Annapurna před třemi lety
     ("54", 2),
     ("25", 2),                                    # Kanada a Aljaška – sabatikl
-    ("55", 2), ("56", 2),
-    ("57", 2),
-    ("LA", 2),                                    # Ladakh letos s oběma dětmi
+    ("55", 5),
+    ("LA", 2),                                    # Ladakh letos s oběma dětmi (pole 143)
+    ("56", 0),                                    # Podnikání s přesahem (pole 146)
+    ("57", 1),                                    # OwnerCompass (pole 147)
     ("58", None),                                 # -> P/O -> 60
     ("60", 0),
 ]
