@@ -45,6 +45,9 @@ for k_, v in labels.items():
         err.append(f"vodicí čára k poli {k_} je moc krátká ({ln:.1f} mm)")
     if abs(math.hypot(v["start"][0] - t["x"], v["start"][1] - t["y"]) - t["r"]) > 0.05:
         err.append(f"vodicí čára popisku {k_} nezačíná na svém poli")
+for k_, v in labels.items():
+    if v and v.get("widest", 0) > v["w"] - 2 * B.PAD + 0.05:
+        err.append(f"text popisku {k_} přetéká kartičku")
 lens_ = [math.hypot(v["a"][0] - v["start"][0], v["a"][1] - v["start"][1]) for v in labels.values() if v]
 print(f"Vodicí čáry: {len(lens_)} (každý popisek má svou), délka {min(lens_):.1f}–{max(lens_):.1f} mm")
 lines = [v["lines"] for v in labels.values() if v]

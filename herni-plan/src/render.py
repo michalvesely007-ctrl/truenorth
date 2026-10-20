@@ -296,7 +296,7 @@ def main(out_svg="board.svg", out_json="layout.json", bg="podklad_150dpi.jpg"):
     open(out_svg, "w", encoding="utf-8").write("\n".join(o))
     data = dict(tiles=[{k: (float(v) if isinstance(v, (np.floating,)) else v) for k, v in t.items()} for t in tiles],
                 branches=branches, ev_tile=ev_tile,
-                labels={k: (None if v is None else dict(rect=v["rect"], a=v["a"], start=v["start"], w=v["lay"]["w"], h=v["lay"]["h"],
+                labels={k: (None if v is None else dict(rect=v["rect"], a=v["a"], start=v["start"], w=v["lay"]["w"], h=v["lay"]["h"], widest=v["lay"]["widest"],
                                                           lines=len(v["lay"]["title"]) + len(v["lay"]["body"])))
                         for k, v in placed.items()},
                 zones=zones)

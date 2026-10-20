@@ -40,7 +40,7 @@ Zápisky za čokoládu (13) a „Dívka si myslí, že ji balím“ (14) jsou dv
 | 54 | 21 | Přemýšlím, jestli nezůstanu pracovat v Bruselu. |
 | 57 | 30 | Chci zlepšit města. Hádej jak? |
 | 60 | 31 | Chci rozjet car-pooling. |
-| 63 | 32 | Stávám se členem komise Smart City, Rady vlády pro neziskovky, European Foundation Centre… rady všeho. |
+| 63 | 32 | Stávám se členem komise Smart City, Rady vlády pro neziskovky, European Foundation Centre … rady všeho. |
 | 66 | 33 | Mohl jsem rozjet firmu. Nebo taky ne. |
 | 69 | 34 | Investuju do James Cook Caravan Ltd. a stávám se menšinovým vlastníkem. |
 | 72 | 35 | Z karavanové firmy se nestává karavanový gigant. Prodávám svůj podíl. |

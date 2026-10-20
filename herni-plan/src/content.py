@@ -156,7 +156,7 @@ EV = {
        "Špatná odpověď: pokračuju bez posunu."),
 "31": ("Chci rozjet car-pooling.", "Úkol a účinek",
        "Předvedu, jak zvu spolujezdce. Pak na pole {N:32}."),
-"32": ("Stávám se členem komise Smart City, Rady vlády pro neziskovky, European Foundation Centre… rady všeho.",
+"32": ("Stávám se členem komise Smart City, Rady vlády pro neziskovky, European Foundation Centre … rady všeho.",
        "Úkol a účinek",
        "Kolik klobouků unesu? **Hodím kostkou a o tolik se posunu.**"),
 "33": ("Mohl jsem rozjet firmu. Nebo taky ne.", "Úkol a účinek",

@@ -248,7 +248,13 @@ def layout_label(tile, ev_tile, width):
     kt = [(task_kind + ":", "i", False)] + rich_tokens(expand(task, ev_tile))
     bl = wrap(kt, inner)
     h = 2 * PAD + LH * (len(tl) + len(bl)) + 0.5
-    return dict(w=width, h=h, title=tl, body=bl, badge_w=badge_w)
+    sp = tw(" ")
+    def line_w(line, indent=0.0):
+        return indent + sum(sum(tw(w, st) for w, st in runs) for runs in line) + sp * (len(line) - 1)
+    widest = max([line_w(l, badge_w + 1.0 if i == 0 else 0) for i, l in enumerate(tl)] + [line_w(l) for l in bl])
+    if widest > inner + 0.05:
+        h = 9999.0   # text by přetekl – tuto šířku nelze použít
+    return dict(w=width, h=h, title=tl, body=bl, badge_w=badge_w, widest=widest)
 
 
 # ---------------------------------------------------------------- umístění popisků
