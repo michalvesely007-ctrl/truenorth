@@ -9,7 +9,7 @@ Vygenerováno skriptem `src/checklist.py`; výstup automatických kontrol je v `
 * Písmo popisků 8 pt při tisku 2× A3 (100 %), na A2 8,6 pt
 
 ## Časová posloupnost cest
-Nový Zéland po studiu environmentalistiky (pole 10) → Madagaskar při narození syna (28) → Annapurna před třemi lety (128) → Kanada a Aljaška v rámci sabatiklu (134) → Ladakh letos, šestitisícovka (143)
+Nový Zéland po přijímacím pohovoru do Nadace Partnerství (pole 10) → Madagaskar při narození syna (28) → Annapurna před třemi lety (128) → Kanada a Aljaška v rámci sabatiklu (134) → Ladakh letos, šestitisícovka (143)
 
 Zápisky za čokoládu (13) a „Dívka si myslí, že ji balím“ (14) jsou dvě zelená pole hned za sebou.
 
@@ -19,12 +19,12 @@ Zápisky za čokoládu (13) a „Dívka si myslí, že ji balím“ (14) jsou dv
 | 1 | 1 | Babička mě poprvé bere do Vysokých Tater. |
 | 3 | 2 | Chci být lesníkem. |
 | 5 | 3 | Rozcestí: les, ekonomie, nebo environmentalistika? |
-| 6 | 7 | Studium environmentalistiky nestíhám. |
+| 6 | 27 | Jdu na pohovor do Nadace Partnerství. Rozumím asi dvěma třetinám otázek. |
+| 7 | 28 | Pohovor vyhrávám. |
 | 10 | 22 | Jedu na Nový Zéland. Přemýšlím, že tam zůstanu. |
+| 12 | 7 | Studium environmentalistiky nestíhám. |
 | 13 | 8 | Vyměňuju zápisky z přednášek za čokoládu. |
 | 14 | 9 | Dívka si myslí, že ji balím. Vezme si mě. |
-| 17 | 27 | Jdu na pohovor do Nadace Partnerství. Rozumím asi dvěma třetinám otázek. |
-| 20 | 28 | Pohovor vyhrávám. |
 | 23 | 29 | V Nadaci Partnerství se potkávají les, ekonomie i environmentalistika. |
 | 26 | 10 | Narodí se nám syn. |
 | 28 | 23 | Na Madagaskaru zjišťuju, že expedice může být větší než můj batoh. |

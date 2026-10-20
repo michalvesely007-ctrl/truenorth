@@ -236,7 +236,7 @@ def main(out_svg="board.svg", out_json="layout.json", bg="podklad_150dpi.jpg"):
         redo = set(os.environ.get("REDO", "").split(","))
         FIX = {}
         for k, v in prev.items():
-            if k in redo or v is None:
+            if k in redo or v is None or not by_label[k]["ev"]:
                 continue
             t = by_label[k]
             FIX[k] = dict(rect=tuple(v["rect"]), start=tuple(v["start"]), a=tuple(v["a"]),
@@ -265,7 +265,7 @@ def main(out_svg="board.svg", out_json="layout.json", bg="podklad_150dpi.jpg"):
     if best[0]:
         _, _, bp, bit = best
         rp = B.place_labels(tiles, ev_tile, zones, soft_zones=SOFT + HEADS, priority=bp,
-                            noise=(0 if bit < 10 else 3 + (bit % 5) * 3), seed=bit, repair=True)
+                            noise=(0 if bit < 10 else 3 + (bit % 5) * 3), seed=bit, repair=True, fixed=FIX)
         if sum(v is None for v in rp.values()) < best[0]:
             best = (sum(v is None for v in rp.values()), rp)
     placed = best[1]

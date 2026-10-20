@@ -17,7 +17,7 @@ Vygenerováno skriptem `src/checklist.py`; výstup automatických kontrol je v `
 * Písmo popisků 8 pt při tisku 2× A3 (100 %), na A2 8,6 pt
 
 ## Časová posloupnost cest
-Nový Zéland po studiu environmentalistiky (pole {T['22']}) → Madagaskar při narození syna ({T['23']}) → Annapurna před třemi lety ({T['26']}) → Kanada a Aljaška v rámci sabatiklu ({T['25']}) → Ladakh letos, šestitisícovka ({T['LA']})
+Nový Zéland po přijímacím pohovoru do Nadace Partnerství (pole {T['22']}) → Madagaskar při narození syna ({T['23']}) → Annapurna před třemi lety ({T['26']}) → Kanada a Aljaška v rámci sabatiklu ({T['25']}) → Ladakh letos, šestitisícovka ({T['LA']})
 
 Zápisky za čokoládu ({T['8']}) a „Dívka si myslí, že ji balím“ ({T['9']}) jsou dvě zelená pole hned za sebou.
 

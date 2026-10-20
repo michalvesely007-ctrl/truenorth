@@ -410,6 +410,8 @@ def place_labels(tiles, ev_tile, zones, soft_zones=(), widths=(31, 36, 41, 47, 5
             rm, sm = tuple(dm["C"][i, :4]), dm["seg"][i]
             confl = [k for k, p in placed.items() if p is not None and
                      conflict(rm, sm, p["rect"], np.array([*p["start"], *p["a"]]))]
+            if any(k in (fixed or {}) for k in confl):
+                continue
             if not confl or len(confl) > 2:
                 if not confl:
                     placed[m] = as_place(m, i); done = True; break
