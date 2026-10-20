@@ -39,7 +39,7 @@ th,td{{border:0.25mm solid #8a7356;padding:1mm 1.4mm;vertical-align:top;text-ali
 <h2>Rozcestí</h2>
 <ul><li>Na rozcestí (zelené pole s tečkovaným kruhem a symbolem ⑂) se <b>vždy zastav</b>, i když ti hod vychází dál. Platí to i pro posun z úkolu.</li>
 <li>Hoď kostkou: <b>lichá (1·3·5) = VLEVO</b>, <b>sudá (2·4·6) = VPRAVO</b> – vlevo a vpravo z pohledu hráče, který jde po cestě. Směr ukazují štítky u začátku větví.</li>
-<li>Výjimky jsou napsané přímo u pole: pole {n('3')} (1–2 les / 3–4 ESF / 5–6 environmentalistika) a pole {n('21')} (rozhoduje odpověď ANO/NE na otázku o eurovém obědě).</li>
+<li>Výjimky jsou napsané přímo u pole: pole {n('3')} (1–2 les / 3–4 ESF / 5–6 environmentalistika) pole {n('21')} (rozhoduje odpověď ANO/NE na otázku o eurovém obědě) a pole {n('58')} (1–2 Podnikání s přesahem / 3–4 OwnerCompass / 5–6 dvě figurky na obou cestách).</li>
 <li>Při dalším tahu pokračuješ zvolenou větví.</li></ul>
 <h2>Slepé cesty</h2>
 <ul><li>Šrafovaná pole vedou na slepou cestu. Na posledním zeleném poli (za ním je závora) se zastavíš, i když ti hod vychází dál, a splníš úkol.</li>
@@ -60,7 +60,7 @@ th,td{{border:0.25mm solid #8a7356;padding:1mm 1.4mm;vertical-align:top;text-ali
 <tr><td>{n('33')}</td><td>lichá / sudá</td><td>další firma – slepá cesta F1–F4</td><td>pole {n('34')}</td><td>z F4 zpět na {n('33')}</td></tr>
 <tr><td>{n('37')}</td><td>lichá / sudá</td><td>sociální podnik – slepá cesta S1–S4</td><td>JIC, pole {n('38')}</td><td>z S4 zpět na {n('37')}</td></tr>
 <tr><td>{n('54')}</td><td>lichá / sudá</td><td>zahraničí – slepá cesta Z1–Z4</td><td>česká cesta, pole {n('25')}</td><td>z Z4 zpět na {n('54')}</td></tr>
-<tr><td>{n('58')}</td><td>lichá / sudá</td><td>Podnikání s přesahem P1–P9 (P1 + 8 hnědých)</td><td>OwnerCompass O1–O11 (O1 + 10 hnědých)</td><td>obě do cíle {n('60')}</td></tr>
+<tr><td>{n('58')}</td><td>1–2 / 3–4 / 5–6</td><td>1–2: Podnikání s přesahem P1–P9 (P1 + 8 hnědých)</td><td>3–4: OwnerCompass O1–O11 (O1 + 10 hnědých)</td><td>obě do cíle {n('60')}; při 5–6 dvě figurky na obou cestách – která je v cíli dřív, ukončí hru</td></tr>
 </table>
 <div class="box leg"><b>Legenda:</b>&nbsp;
 <span style="background:#e6cfa2"></span>hnědé pole &nbsp;

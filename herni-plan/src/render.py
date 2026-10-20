@@ -200,6 +200,8 @@ def main(out_svg="board.svg", out_json="layout.json", bg="podklad_150dpi.jpg"):
         fork_ev = br["fork"]
         if fork_ev == "3":
             txt = {"L": "5–6 ◄ ENVIRO", "S": "3–4 ▲ ESF", "R": "LES ► 1–2"}[br["side"]]
+        elif fork_ev == "58":
+            txt = {"L": "1–2 ◄ PŘESAH", "R": "OWNERCOMPASS ► 3–4"}[br["side"]]
         elif fork_ev == "21":
             txt = {"L": "ANO ◄ VLEVO", "R": "NE ► VPRAVO"}[br["side"]]
         else:
@@ -227,12 +229,24 @@ def main(out_svg="board.svg", out_json="layout.json", bg="podklad_150dpi.jpg"):
     zones += tag_rects + HEADS[:2]   # Michal a Katka (horolezci) musí zůstat vidět
     fin = by_ev["60"]
     zones.append((fin["x"] - 19, fin["y"] - 19, fin["x"] + 19, fin["y"] + 19))
+    import os
+    FIX = None
+    if os.environ.get("FIX_LABELS"):
+        prev = json.load(open(os.environ["FIX_LABELS"], encoding="utf-8"))["labels"]
+        redo = set(os.environ.get("REDO", "").split(","))
+        FIX = {}
+        for k, v in prev.items():
+            if k in redo or v is None:
+                continue
+            t = by_label[k]
+            FIX[k] = dict(rect=tuple(v["rect"]), start=tuple(v["start"]), a=tuple(v["a"]),
+                          lay=B.layout_label(t, ev_tile, v["w"]))
     prio = ["8", "E2", "E4", "L3", "V2", "V4", "5", "N4"]
     best = None
     import random
     rnd = random.Random(7)
     for it in range(150):
-        placed = B.place_labels(tiles, ev_tile, zones, soft_zones=SOFT + HEADS, priority=prio, noise=(0 if it < 10 else 3 + (it % 5) * 3), seed=it)
+        placed = B.place_labels(tiles, ev_tile, zones, soft_zones=SOFT + HEADS, priority=prio, noise=(0 if it < 10 else 3 + (it % 5) * 3), seed=it, fixed=FIX)
         miss = [k for k, v in placed.items() if v is None]
         if best is None or len(miss) < best[0]:
             best = (len(miss), placed, list(prio), it)

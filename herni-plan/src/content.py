@@ -228,8 +228,10 @@ EV = {
 "57": ("Zakládám OwnerCompass.", "Úkol",
        "Ukážu směr, kterým mě teď táhne kompas."),
 "58": ("Rozcestí: Podnikání s přesahem, nebo OwnerCompass?", "Úkol a účinek",
-       "Hoď kostkou: **lichá – doleva** na {R:P} (Podnikání s přesahem, P1); "
-       "**sudá – doprava** na {R:O} (OwnerCompass, O1). Obě cesty vedou do cíle na pole {N:60}."),
+       "Hoď kostkou: **1–2** – jdu doleva cestou Podnikání s přesahem ({R:P}); "
+       "**3–4** – jdu doprava cestou OwnerCompass ({R:O}); "
+       "**5–6** – získávám **2 figurky** a jdu oběma cestami současně: házím za každou "
+       "zvlášť a ta, která bude v cíli (pole {N:60}) dřív, ukončí hru."),
 "59P": ("Vydávám se cestou Podnikání s přesahem.", "Úkol",
         "Řeknu svůj první krok a vydám se po této závěrečné trase."),
 "59O": ("Vydávám se cestou OwnerCompass.", "Úkol",

@@ -1,7 +1,7 @@
 Očíslovaná pole hlavní trasy: 150 (1 až 150 )
 Zelená pole celkem: 69 | na hlavní trase: 55 | ve větvích: 14
 Vodicí čáry: 69 (každý popisek má svou), délka 4.5–56.0 mm
-Popisky: 69 umístěno, řádků 2–12, písmo 8 pt (=2.82 mm)
+Popisky: 69 umístěno, řádků 2–16, písmo 8 pt (=2.82 mm)
   větev  L z pole   5 (vpravo): 4 polí, spojení na 6
   větev  E z pole   5 (rovně): 5 polí, spojení na 6
   větev  V z pole   5 (vlevo): 5 polí, spojení na 6

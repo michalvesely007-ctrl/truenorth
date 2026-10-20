@@ -283,7 +283,7 @@ def nearest_on_rect(r, x, y):
     return (min(max(x, r[0]), r[2]), min(max(y, r[1]), r[3]))
 
 
-def place_labels(tiles, ev_tile, zones, soft_zones=(), widths=(31, 36, 41, 47, 55, 64, 74, 86, 100), priority=(), repair=False, noise=0.0, seed=0):
+def place_labels(tiles, ev_tile, zones, soft_zones=(), widths=(31, 36, 41, 47, 55, 64, 74, 86, 100), priority=(), repair=False, noise=0.0, seed=0, fixed=None):
     greens = [t for t in tiles if t["ev"]]
     TX = np.array([t["x"] for t in tiles]); TY = np.array([t["y"] for t in tiles])
     TR = np.array([t["r"] for t in tiles])
@@ -339,6 +339,9 @@ def place_labels(tiles, ev_tile, zones, soft_zones=(), widths=(31, 36, 41, 47, 5
                                 alive=np.ones(len(order), bool))
     placed = {}
     remaining = set(data)
+    for k, v in (fixed or {}).items():
+        placed[k] = v
+        remaining.discard(k)
     ts = np.linspace(0, 1, 16)
 
     def kill(d, r, seg):
@@ -358,6 +361,9 @@ def place_labels(tiles, ev_tile, zones, soft_zones=(), widths=(31, 36, 41, 47, 5
              (ccw(p1x, p1y, p2x, p2y, p3x, p3y) != ccw(p1x, p1y, p2x, p2y, p4x, p4y))
         d["alive"] &= ~(ov | l1 | l2 | cr)
 
+    for k, v in (fixed or {}).items():
+        for j in remaining:
+            kill(data[j], v["rect"], np.array([*v["start"], *v["a"]]))
     while remaining:
         pr = [k for k in priority if k in remaining]
         lab = pr[0] if pr else min(remaining, key=lambda k: int(data[k]["alive"].sum()))
