@@ -78,7 +78,7 @@ for k, (title, kind, task) in EV.items():
         if m not in d["ev_tile"]: err.append(f"odkaz na neexistující pole {m}")
 eff = {}
 for k, (_, _, task) in EV.items():
-    for m in re.findall(r"(Posunu se o \d|posunu se o \d|Vrátím se o \d|vrátím se o \d|Stojím (?:jedno|dvě) kol[oa]|Zůstávám tu jedno kolo|přesný počet|házím znovu)", task):
+    for m in re.findall(r"(Posunu se o \d|posunu se o \d|Vrátím se o \d|vrátím se o \d|Stojím (?:jedno|dvě) kol[oa]|Zůstávám tu jedno kolo|přesný počet|házím znovu|o tolik se posunu)", task):
         eff.setdefault(m.lower(), []).append(d["ev_tile"][k])
 print("Herní účinky:")
 for k, v in sorted(eff.items()):

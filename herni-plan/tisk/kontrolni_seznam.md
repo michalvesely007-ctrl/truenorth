@@ -40,7 +40,7 @@ Zápisky za čokoládu (13) a „Dívka si myslí, že ji balím“ (14) jsou dv
 | 54 | 21 | Přemýšlím, jestli nezůstanu pracovat v Bruselu. |
 | 57 | 30 | Chci zlepšit města. Hádej jak? |
 | 60 | 31 | Chci rozjet car-pooling. |
-| 63 | 32 | Car-pooling nevyjde. |
+| 63 | 32 | Stávám se členem komise Smart City, Rady vlády pro neziskovky, European Foundation Centre… rady všeho. |
 | 66 | 33 | Mohl jsem rozjet firmu. Nebo taky ne. |
 | 69 | 34 | Investuju do James Cook Caravan Ltd. a stávám se menšinovým vlastníkem. |
 | 72 | 35 | Z karavanové firmy se nestává karavanový gigant. Prodávám svůj podíl. |
@@ -82,6 +82,6 @@ Zápisky za čokoládu (13) a „Dívka si myslí, že ji balím“ (14) jsou dv
 | O1 | 59O | Vydávám se cestou OwnerCompass. |
 | B4 | 21B | V Bruselu hledám kariéru i levný oběd. |
 | N4 | 22B | Na Novém Zélandu se mi líbí až podezřele moc. |
-| F4 | 33B | Zakládám firmu na sdílení všeho. Zatím sdílím hlavně starosti. |
+| F4 | 33B | Car-pooling nevyjde. |
 | S4 | 37B | Zakládám sociální podnik. Zatím podnikám hlavně v přemýšlení. |
 | Z4 | 54B | Hledám nový život v zahraničí. Zapomněl jsem, jak se tam říká „kde je kafe?“ |
