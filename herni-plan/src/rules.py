@@ -70,7 +70,7 @@ th,td{{border:0.25mm solid #8a7356;padding:1mm 1.4mm;vertical-align:top;text-ali
 <span style="background:#e8b443"></span>cíl
 <br>Plán je čitelný i černobíle: typ pole rozlišuje také kruh, šrafy, symbol ⑂ a závora na konci slepé cesty.</div>
 <h2>Tisk na 2× A3</h2>
-<ol><li>Vytiskni soubor <i>Cesta_stastnym_zivotem_2xA3.pdf</i> na A3 na výšku ve <b>skutečné velikosti 100 %</b>. Proužek dole musí měřit přesně 50 mm.</li>
+<ol><li>Vytiskni soubor <i>Cesta_stastnym_zivotem_2xA3.pdf</i> na A3 na výšku, <b>oba listy najednou</b>, ve <b>skutečné velikosti 100 %</b> (vypni „Přizpůsobit stránce“ i „Zmenšit nadrozměrné stránky“). Proužek dole musí měřit na obou listech přesně 50 mm.</li>
 <li>Na listu 2 odstřihni levý bílý okraj přesně po přerušované čáře (✂).</li>
 <li>List 1 natři lepidlem na šrafovaném pruhu a přilož list 2 tak, aby se jeho hrana kryla s čárou spoje a křížky nahoře i dole.</li></ol>
 </body></html>"""

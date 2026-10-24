@@ -37,6 +37,16 @@ def marks(x, label, cut):
         o.append(f'<line x1="{x - 3.4}" y1="{cy}" x2="{x + 3.4}" y2="{cy}" stroke="#000" stroke-width="0.2"/>')
     return "".join(o)
 
+def corners():
+    """Stejné rohové značky na obou listech: obsah obou stránek má pak shodný rozměr,
+    takže případné „přizpůsobení stránce“ v tiskárně změní oba listy stejně."""
+    o = []
+    for x, dx in ((3, 1), (294, -1)):
+        for y, dy in ((3, 1), (417, -1)):
+            o.append(f'<path d="M{x},{y + 6 * dy}V{y}H{x + 6 * dx}" fill="none" stroke="#000" stroke-width="0.25"/>')
+    return "".join(o)
+
+
 def scale_bar(x, y):
     o = [f'<rect x="{x}" y="{y}" width="50" height="2" fill="none" stroke="#000" stroke-width="0.2"/>']
     for i in range(0, 50, 10):
@@ -55,8 +65,8 @@ p1 = (f'<div class="page" style="width:297mm;height:420mm">'
       f'<svg class="abs" style="left:0;top:0" width="297mm" height="420mm" viewBox="0 0 297 420">'
       f'{marks(L1 + S, "A", False)}'
       f'<text x="{L1}" y="6" font-family="Carlito" font-weight="bold" font-size="4" fill="#000">LIST 1 ze 2 – LEVÁ polovina · Cesta šťastným životem</text>'
-      f'<text x="{L1}" y="11" font-family="Carlito" font-size="2.9" fill="#000">Tiskni A3 na výšku, SKUTEČNÁ VELIKOST 100 % (vypni „přizpůsobit stránce“). Šrafovaný pruh vpravo je lepicí – přijde na něj list 2.</text>'
-      f'{scale_bar(L1, 410)}'
+      f'<text x="{L1}" y="11" font-family="Carlito" font-size="2.9" fill="#000">Tiskni oba listy najednou, A3 na výšku, SKUTEČNÁ VELIKOST 100 % (vypni „přizpůsobit“). Proužek dole = 50 mm. Šrafovaný pruh je lepicí.</text>'
+      f'{corners()}{scale_bar(L1, 410)}'
       f'<text x="{L1 + S - 2}" y="418" font-family="Carlito" font-size="2.6" text-anchor="end" fill="#000">čára spoje ▸ zde začíná list 2</text>'
       f'</svg></div>')
 # list 2 – pravá polovina; levý bílý okraj se odstřihne přesně po čáře spoje
@@ -68,7 +78,7 @@ p2 = (f'<div class="page" style="width:297mm;height:420mm">'
       f'<text x="{L2 + 3}" y="11" font-family="Carlito" font-size="2.9" fill="#000">✂ Odstřihni levý bílý okraj přesně po přerušované čáře. Pak list přilož na lepicí pruh listu 1 tak, aby se kryly křížky nahoře i dole.</text>'
       f'<text x="{L2 - 2}" y="9" font-family="Carlito" font-size="5" text-anchor="end" fill="#000">✂</text>'
       f'<text x="{L2 - 2}" y="414" font-family="Carlito" font-size="5" text-anchor="end" fill="#000">✂</text>'
-      f'{scale_bar(L2 + 3, 410)}'
+      f'{corners()}{scale_bar(L2 + 3, 410)}'
       f'</svg></div>')
 open("print_2xA3.html", "w", encoding="utf-8").write(head + p1 + p2 + "</body></html>")
 print("ok")
